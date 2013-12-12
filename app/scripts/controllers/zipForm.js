@@ -1,22 +1,22 @@
 'use strict';
 
-angular.module('weatherbyApp');
+angular.module('weatherbyApp')
+  .controller('ZipFormCtrl', function($scope, $http) {
 
-function zipForm($scope, $http) {
-  $scope.master= {};
+  $scope.master = {};
 
   $scope.submit = function(zip) {
-	$scope.weather = null;
+  	$scope.weather = null;
 
-  	$http({method: 'GET', url: 'http://api.wunderground.com/api/4227e08d470f4fe8/forecast/q/'+zip.code+'.json'}).
-  		success(function(forecast){
+  	$http({method: 'GET', url: 'http://api.wunderground.com/api/4227e08d470f4fe8/forecast/q/'+zip.code+'.json'})
+  		.success(function(forecast){
   			$scope.weather = forecast.txt_forecast.forecastday.fctext;
-  		}).
-  		error(function(data,status){
+  		})
+  		.error(function(data,status){
   			$scope.weather = data || "Request failed";
   			$scope.status = status;
   		})
-  	
+
   };
 
   $scope.reset = function() {
@@ -24,4 +24,4 @@ function zipForm($scope, $http) {
   };
 
   $scope.reset();
-}
+});
