@@ -24,7 +24,7 @@ angular.module('weatherbyApp')
 
         // console.log-ing this shows forcastday is an array, so you can't pull fctext directly from it,
         // you'll need forecastday[0].fctext or another implementation (ng-repeat maybe? or were you already thinking that?)
-        $scope.weather = forecast.txt_forecast.forecastday.fctext;
+        $scope.weather = forecast.txt_forecast;
       })
       // really glad you handled this error :)
       .error(function(error){
@@ -39,6 +39,7 @@ angular.module('weatherbyApp')
 
   $scope.reset = function() {
     $scope.zip = angular.copy($scope.master);
+    $scope.weather = null;
   };
 
   $scope.reset();

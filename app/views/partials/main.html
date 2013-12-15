@@ -7,14 +7,22 @@
   <h3 class="text-muted">weatherby</h3>
 </div>
 
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!</a></p>
+<div class="jumbotron" ng-controller="ZipFormCtrl">
+  <form novalidate class="simple-form">
+    <div class="row">
+      <label for="zipCode">Enter your zip code:</label>
+      <input type="text" class="form-control" id="zipCode" placeholder="Zip" ng-model="zip.code" /><br />
+      <button type="button" class="btn btn-default" ng-click="reset()">Reset</button>
+      <button type="button" class="btn btn-primary" ng-click="submit(zip)">Submit</button>
+    </div>
+    <div class="row">
+      <br/>
+      <p class="lead">{{weather.forecastday[0].title}}</p>
+      <p>{{weather.forecastday[0].fcttext}}</p>
+      <p class="lead">{{weather.forecastday[1].title}}</p>
+      <p>{{weather.forecastday[1].fcttext}}</p>
+    </div>
+    </form>
 </div>
 
 <div class="row marketing">
@@ -24,14 +32,6 @@
   </div>
 </div>
 
-<div ng-controller="ZipFormCtrl">
-    <form novalidate class="simple-form">
-      Enter your zip code: <input type="text" ng-model="zip.code" /><br />
-      <button ng-click="reset()">Reset</button>
-      <button ng-click="submit(zip)">Submit</button>
-    </form>
-    <p>{{weather}}</p>
-</div>
 
 <div class="footer">
   <p>♥ from the Yeoman team</p>
