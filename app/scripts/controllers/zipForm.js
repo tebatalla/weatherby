@@ -24,8 +24,12 @@ angular.module('weatherbyApp')
       $scope.status = error.status;
     }
 
-    $http.jsonp('http://api.wunderground.com/api/4227e08d470f4fe8/forecast/q/'+zip.code+'.json?callback=JSON_CALLBACK')
-      .then(onSuccess, onError);
+    // real api won't work offline
+    // $http.jsonp('http://api.wunderground.com/api/4227e08d470f4fe8/forecast/q/'+zip.code+'.json?callback=JSON_CALLBACK')
+    //   .then(onSuccess, onError);
+
+    var mockedData = mockedApi.success();
+    onSuccess(mockedData);
 
   };
 
