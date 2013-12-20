@@ -29,6 +29,7 @@ angular.module('weatherbyApp')
     //   .then(onSuccess, onError);
 
     var mockedData = mockedApi.success();
+    console.log(mockedData);
     onSuccess(mockedData);
 
   };
