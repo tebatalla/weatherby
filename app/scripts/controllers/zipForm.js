@@ -10,7 +10,6 @@ angular.module('weatherbyApp')
 
     var onSuccess = function(res){
       console.log('success');
-      console.log(res);
       var forecast = res.forecast;
       console.log(forecast);
       $scope.weather = forecast.txt_forecast;
@@ -29,7 +28,6 @@ angular.module('weatherbyApp')
     //   .then(onSuccess, onError);
 
     var mockedData = mockedApi.success();
-    console.log(mockedData);
     onSuccess(mockedData);
 
   };
