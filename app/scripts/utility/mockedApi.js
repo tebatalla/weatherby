@@ -5,7 +5,7 @@ angular.module('weatherbyApp')
   .factory('mockedApi', function(){
     // this factory returns an object with functions on it
     return{
-      getForecastData: function(){
+      success: function(){
         return {data: 1};
       }
     }
