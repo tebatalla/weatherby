@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('weatherbyApp')
-  .controller('ZipFormCtrl', function($scope, $http, mockedApi) {
+  .controller('ZipFormCtrl', function($scope, $http) {
 
   $scope.master = {};
 
@@ -23,12 +23,10 @@ angular.module('weatherbyApp')
       $scope.status = error.status;
     }
 
-    // real api won't work offline
-    // $http.jsonp('http://api.wunderground.com/api/4227e08d470f4fe8/forecast/q/'+zip.code+'.json?callback=JSON_CALLBACK')
-    //   .then(onSuccess, onError);
+    $http.jsonp('http://api.wunderground.com/api/4227e08d470f4fe8/forecast/q/'+zip.code+'.json?callback=JSON_CALLBACK')
+      .success(onSuccess).error(onError);
 
-    var mockedData = mockedApi.success();
-    onSuccess(mockedData);
+
 
   };
 
