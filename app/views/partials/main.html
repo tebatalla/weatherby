@@ -11,9 +11,9 @@
   <form novalidate class="simple-form">
     <div class="row">
       <label for="zipCode">Enter your zip code:</label>
-      <input type="text" class="form-control" id="zipCode" placeholder="Zip" ng-model="zipCode" /><br />
+      <input type="text" class="form-control" id="zipCode" placeholder="Zip" ng-model="location.zipCode" /><br />
       <button type="button" class="btn btn-default" ng-click="reset()">Reset</button>
-      <button type="button" class="btn btn-primary" ng-click="submit(zip)">Submit</button>
+      <button type="button" class="btn btn-primary" ng-click="submit(location)">Submit</button>
     </div>
     <div class="row">
       <br/>
