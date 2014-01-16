@@ -52,13 +52,13 @@ angular.module('weatherbyApp').provider('Weather', function () {
     });
 
 angular.module('weatherbyApp')
-	.service('formatWeather', function(){
+	.service('formatWeather', ['userTolerance', function(userTolerance){
 		return {
             format: function (data) {
-                if (data.hourly_forecast[0].snow.english > 0) {
+                if (data.hourly_forecast[0].snow.english > userTolerance.customOutput('snow',0)) {
                     return 'It\'s going to snow! Don\'t forget to wear some snow boots and a winter jacket!';
                 }
-                else if (data.hourly_forecast[0].feelslike.english < 20 && data.hourly_forecast[0].wspd.english >= 15) {
+                else if (data.hourly_forecast[0].feelslike.english < userTolerance.customOutput('feelsLike',20) && data.hourly_forecast[0].wspd.english >= userTolerance.customOutput('wind',15)) {
                     return 'It\'s going to be cold AND windy. Wear several layers, with a windbreaker to withstand the biting wind!';
                 }
                 else{
@@ -66,6 +66,29 @@ angular.module('weatherbyApp')
                 }
 
             }
+		}
+	}]);
+
+angular.module('weatherbyApp')
+	.factory('userTolerance', function(){
+		
+		var userSettings = {};
+		//sample user has a feelslike threshold 20 degrees higher than average
+		userSettings["feelsLike"] = 20;
+		userSettings["wind"] = 3;
+		userSettings["rain"] = 0.05;
+		return{
+			customOutput: function(type,weatherThreshold){
+				for(var i in userSettings){
+					if(i==type){
+						console.log(i+': '+(userSettings[i] + weatherThreshold))
+						return userSettings[i] + weatherThreshold;
+					}
+				}
+				//if no custom setting exists, go with current threshold
+				return weatherThreshold;
+
+			}
 		}
 	});
 
