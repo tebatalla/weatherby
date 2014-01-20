@@ -10,19 +10,30 @@
 <div class="jumbotron" ng-controller="ZipFormCtrl">
   <form novalidate class="form-horizontal" role="form">
     <div class="form-group">
-      <label class="control-label col-sm-4 h4" for="zipCode">Enter your zip code:</label>
-      <div class="col-sm-7">
+      <label class="control-label col-xs-6 h3" for="zipCode">Enter your zip code:</label>
+      <div class="col-xs-6">
         <input type="text" class="form-control" id="zipCode" placeholder="Zip" ng-model="location.zipCode" />
       </div>
     </div>
-    <div class="form-group">
-      <label class="control-label col-sm-4 h4" for="timeForUpdate">For what amount of time would you like to receive updates?</label>
-    </div>    
-    <div class="form-group"> 
-      <button type="button" class="btn btn-default btn-sm" ng-click="reset()">Reset</button>
-      <button type="button" class="btn btn-primary btn-sm" ng-click="submit(location)">Submit</button>
-    </div>
   </form>
+  <div class="row">
+    <label class="control-label col-lg-12 h3" for="timeForUpdate">How long do you want an update for?</label>
+  </div>
+  <div class="row"><br></div>
+  <div class="row">
+    <p class="h4">Now</p>
+  </div>
+  <div class="row">
+    <small>till</small>
+  </div>
+  <div class="row" ng-model="mytime" ng-change="changed()" style="display:inline-block;">
+    <timepicker hour-step="1" minute-step="15"></timepicker>
+  </div> 
+
+    <div class="form-group"> 
+      <button type="button" class="btn btn-default btn-xs" ng-click="reset()">Reset</button>
+      <button type="button" class="btn btn-success btn-xs" ng-click="submit(location)">Submit</button>
+    </div>
   <div class="row">
       <br/>
       <p class="lead" ng-model="weather">{{weather.forecast}}</p>
