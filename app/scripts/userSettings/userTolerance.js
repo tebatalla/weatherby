@@ -5,7 +5,7 @@ angular.module('weatherbyApp')
 		
 		var userSettings = {};
 		//sample user has a feelslike threshold 20 degrees higher than average
-		userSettings["feelsLike"] = 0;
+		userSettings["feelsLike"] = 20;
 		userSettings["wind"] = 3;
 		userSettings["rain"] = 0.05;
 		return{
